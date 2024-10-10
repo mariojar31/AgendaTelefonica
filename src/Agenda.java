@@ -33,22 +33,44 @@ public class Agenda {
     // Otros Metodos
 
     public void añadirContacto(Contacto contacto){
-        if(espaciosLibres()>0 && !estaEnAgenda(contacto.getNombre(), contacto.getApellido())){
+        if(espaciosLibres()>0 && !estaEnAgenda(contacto)){
             for (int i = 0; i < contactos.length; i++) {
                 if(contactos[i]==null){
                     contactos[i]=contacto;
                     break;
                 }
             }
-            System.out.println("Contacto Agregado Satisfactoriamente: ");
+            System.out.println("\n----------------------------------------\n");
+            System.out.println("Contacto Agregado Satisfactoriamente: \n");
             System.out.println("Nombre: "+contacto.getNombre()+" "+contacto.getApellido());
             System.out.println("Telefono: "+contacto.getTelefono());
+            System.out.println("\n----------------------------------------\n");
+
 
         }else if(espaciosLibres()==0){
+            System.out.println("\n----------------------------------------\n");
             System.out.println("Agenda llena. Elimine contactos para seguir agregando nuevos.");
-        }else if(estaEnAgenda(contacto.getNombre(), contacto.getApellido())){
+            System.out.println("\n----------------------------------------\n");
+        }else if(estaEnAgenda(contacto)){
+            System.out.println("\n----------------------------------------\n");
             System.out.println("El contacto ya se encuentra registrado en la agenda.");
+            System.out.println("\n----------------------------------------\n");
         }
+    }
+
+    public void listarContactos(){
+        System.out.println("\n::::::::::::::::Contactos::::::::::::::::\n");
+        
+        for (Contacto contacto : contactos){
+            if(contacto!=null){
+                System.out.println(contacto.getNombre()+" "+contacto.getApellido());
+                System.out.println("Telefono: "+contacto.getTelefono());
+                System.out.println("\n----------------------------------------\n");
+            }
+
+        }
+        System.out.println("Contactos guardados: "+(cantContactos-espaciosLibres()));
+        System.out.println("Espacio disponible: "+espaciosLibres()+" de "+cantContactos+"\n");
     }
 
     //Metodos Auxiliares
@@ -64,10 +86,10 @@ public class Agenda {
         return count;
     }
 
-    public boolean estaEnAgenda(String nombre, String apellido){
+    public boolean estaEnAgenda(Contacto contact){
         boolean esta=false;
         for (Contacto contacto : contactos) {
-            if(contacto!=null && contacto.getNombre().toLowerCase().equals(nombre.toLowerCase()) && contacto.getApellido().toLowerCase().equals(apellido.toLowerCase())){
+            if(contacto!=null && contacto.getNombre().toLowerCase().equals(contact.getNombre().toLowerCase()) && contacto.getApellido().toLowerCase().equals(contact.getApellido().toLowerCase())){
                 esta = true;
                 break;
             }else{
