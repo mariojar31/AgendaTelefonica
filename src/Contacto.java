@@ -1,13 +1,13 @@
 public class Contacto {
     private String nombre;
     private String apellido;
-    private int telefono;
+    private long telefono;
 
 
     public Contacto(){
 
     }
-    public Contacto(String nombre, String apellido, int telefono){
+    public Contacto(String nombre, String apellido, long telefono){
         this.nombre=nombre;
         this.apellido=apellido;
         this.telefono=telefono;
@@ -21,7 +21,7 @@ public class Contacto {
         return nombre;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
@@ -33,7 +33,7 @@ public class Contacto {
         this.nombre = nombre;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 }
